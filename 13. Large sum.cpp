@@ -4,32 +4,30 @@ using namespace std;
 int main(){
 	string s;
 	string res="";
-	int a;
-	for(int i=0; i<5; i++){
+	int a,v;
+	for(int i=0; i<100; i++){
 		cin>>s;
 		a=0;
 		int r=res.size();
 		int n=s.size();
 		int b=abs(n-r);
+		
 		if(r<n){
-			for(int j=0; j<b; j++){
+			for(int k=0; k<b; k++)
 				res="0"+res;
-			}
 		}
 		else{
-			for(int j=0; j<b; j++){
+			for(int k=0; k<b; k++)
 				s="0"+s;
-			}
-		}		
-		cout<<r<<endl;
-		cout<<s<<endl;
+		}
+		
+		r=res.size();
 		for(int j=r-1; j>=0; j--){
-			res[j]=char(((int(res[j]-'0')+int(s[j]-'0')+a)%10)+'0');
-			cout<<res[j];
-			a=(int(res[j]-'0')+int(s[j]-'0')+a)/10;
+			v=(res[j]-'0'+s[j]-'0'+a)/10;
+			res[j]=((res[j]-'0'+s[j]-'0'+a)%10)+'0';
+			a=v;                             
 		}
 		if(a>0) res=to_string(a)+res;
-		
 	}
 	for(int i=0; i<10; i++){
 		cout<<res[i];
